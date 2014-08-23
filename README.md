@@ -54,6 +54,6 @@ After this is done, run the following **in your master Ukko node** (correct the 
     --jar "/cs/taatto/scratch/your_username/your-artifact-id-1.0-jar-with-dependencies.jar"
 ```
 
-Again, it is a good idea to redirect stderr (and maybe even stdout) to a file as we did when running the code locally.
+Again, it is a good idea to redirect stderr (and maybe even stdout) to a file as we did when running the code locally. There is an example shell script called `run-spark102.sh` to launch your project in cluster, but you need to correct the paths inside to use it. Also, if your process takes a long time to run, it's a good idea to run it inside a `screen` session (or equivalent) so it doesn't get killed if your SSH connection disconnects or something else happens.
 
-If your process takes a long time to run, it's a good idea to run it inside a `screen` session (or equivalent) so it doesn't get killed if your SSH connection disconnects or something else happens.
+Also, at some point, you might want to tune the memory allocation of slaves and other Spark options – see <http://spark.apache.org/docs/latest/submitting-applications.html> and <http://spark.apache.org/docs/latest/configuration.html#spark-properties> for details.
