@@ -29,7 +29,7 @@
 
 9.  Finally, you can stop the cluster by running `sbin/stop-all.sh` in your master node.
 
-*Note: When Spark cluster is started, it also launches a Web UI, which can be very helpful to see the status of your worker nodes and your application. It, however, is slightly challenging to access if Ukko nodes are unaccessable from your browser. You can:
+Note: When Spark cluster is started, it also launches a Web UI, which can be very helpful to see the status of your worker nodes and your application. It, however, is slightly challenging to access if Ukko nodes are unaccessable from your browser. You can:
 
-    1.  Run a browser instance in a server that **does** have a access to Ukko nodes
-    2.  Set up a SSH tunnel and access Ukko nodes that way*
+    1.  Run a browser instance in a server that *does* have a access to Ukko nodes
+    2.  Set up a SSH tunnel and access Ukko nodes that way
