@@ -1,3 +1,3 @@
 # Example Spark project
 
-See: <http://is.gd/runningsparkinukko> and <http://is.gd/settingsparktoukko>
+See: <http://is.gd/runnigsparkinukko> and <http://is.gd/settingsparktoukko>
