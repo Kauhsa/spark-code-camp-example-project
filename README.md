@@ -2,7 +2,7 @@
 
 *This guide contains a lot of shell commands with example paths – when running these commands, lease double-check you're using correct paths that apply in your case!*
 
-This is an example project that you can use as starting point to your project. The only dependency you'll need is Maven (probably version 3), but if you're using machines in Department of Computer Science, it should be already installed.
+This is an example project that you can use as starting point to your project. The only extra dependency you'll need is Maven (probably version 3), but if you're using machines in Department of Computer Science, it should be already installed.
 
 ## What's inside
 
@@ -27,22 +27,22 @@ So to run the project locally, execute the following in shell:
 path/to/spark-distribution/bin/spark-submit \
     --class "my.java.or.scala.Program" \
     --master "local" \
-    --jar "target/your-artifact-id-1.0-jar-with-dependencies.jar"
+    "target/your-artifact-id-1.0-jar-with-dependencies.jar"
 ```
 
 Spark likes to print a lot of... details about the execution to stderr, so if it bothers you, redirect stderr to a file (append the command with `2> stderr.log`).
 
-Since the commands can get quite long, putting them inside a shell script is helpful.
+Since the commands can get quite long, creating some helper scripts for yourself is helpful.
 
-## How to run in a Ukko cluster
+## How to run in the Ukko cluster
 
-First, you'll need to setup Spark in Ukko cluster. See [guide to setup Spark in Ukko](SPARK_IN_UKKO.md) for instructions.
+First, you'll need to setup Spark in the Ukko cluster. See the [guide to setup Spark in Ukko](SPARK_IN_UKKO.md) for instructions.
 
-Next step is to copy your JAR to /cs/taatto/scratch, this can be done using SCP:
+Next step is to copy your JAR to `/cs/taatto/scratch`, this can be done using SCP:
 
 ```
 scp target/your-artifact-id-1.0-jar-with-dependencies.jar \
-    melkinpaasi.cs.helsinki.fi:/cs/taatto/your_username/your-artifact-id-1.0-jar-with-dependencies.jar
+    melkinkari.cs.helsinki.fi:/cs/taatto/scratch/your_username/your-artifact-id-1.0-jar-with-dependencies.jar
 ```
 
 After this is done, run the following **in your master Ukko node** (correct the paths):
@@ -50,8 +50,8 @@ After this is done, run the following **in your master Ukko node** (correct the 
 ```
 /cs/taatto/scratch/your_username/path_to_spark/bin/spark-submit \
     --class "my.java.or.scala.Program" \
-    --master "local" \
-    --jar "/cs/taatto/scratch/your_username/your-artifact-id-1.0-jar-with-dependencies.jar"
+    --master "spark://ukkoXXX:7077" \
+    "/cs/taatto/scratch/your_username/your-artifact-id-1.0-jar-with-dependencies.jar"
 ```
 
 Again, it is a good idea to redirect stderr (and maybe even stdout) to a file as we did when running the code locally. There is an example shell script called `run-spark102.sh` to launch your project in cluster, but you need to correct the paths inside to use it. Also, if your process takes a long time to run, it's a good idea to run it inside a `screen` session (or equivalent) so it doesn't get killed if your SSH connection disconnects or something else happens.
